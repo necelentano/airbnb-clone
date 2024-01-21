@@ -1,5 +1,6 @@
 "use client";
 
+import useFavorite from "@/app/hooks/useFavorite";
 import { SafeUser } from "@/app/types";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
@@ -12,8 +13,10 @@ const HearthButton: React.FC<HearthButtonProps> = ({
   listingId,
   currentUser,
 }) => {
-  const hashFavorited = false;
-  const toggleFavorite = () => {};
+  const { hasFavorited, toggleFavorite } = useFavorite({
+    listingId,
+    currentUser,
+  });
 
   return (
     <div
@@ -26,7 +29,7 @@ const HearthButton: React.FC<HearthButtonProps> = ({
       />
       <AiFillHeart
         size={24}
-        className={`${hashFavorited ? "fill-rose-500" : "fill-neutral-500/70"}`}
+        className={`${hasFavorited ? "fill-rose-500" : "fill-neutral-500/70"}`}
       />
     </div>
   );
