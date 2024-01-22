@@ -7,12 +7,12 @@ import { format } from "date-fns";
 import { Listing, Reservation } from "@prisma/client";
 
 import useCountries from "@/app/hooks/useCountries";
-import { SafeUser } from "@/app/types";
+import { SafeListing, SafeUser } from "@/app/types";
 import HearthButton from "../../hearth-button/HearthButton";
 import Button from "../../button/Button";
 
 interface ListingCardProps {
-  data: Listing;
+  data: SafeListing;
   reservation?: Reservation;
   onAction?: (id: string) => void;
   disabled?: boolean;
