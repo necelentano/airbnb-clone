@@ -4,6 +4,7 @@ import Container from "@/app/components/container/Container";
 import EmptyState from "@/app/components/empty-state/EmptyState";
 import React from "react";
 import ListingClient from "./listing-client/ListingClient";
+import getReservations from "@/app/actions/getReservations";
 
 interface IParams {
   listingId?: string;
@@ -11,6 +12,7 @@ interface IParams {
 
 const ListingPage = async ({ params }: { params: IParams }) => {
   const listing = await getListingById(params);
+  const reservations = await getReservations(params);
   const currentUser = await getCurrentUser();
 
   // basic error-handling
@@ -31,7 +33,13 @@ const ListingPage = async ({ params }: { params: IParams }) => {
       </Container>
     );
   }
-  return <ListingClient listing={listing} currentUser={currentUser} />;
+  return (
+    <ListingClient
+      listing={listing}
+      currentUser={currentUser}
+      reservations={reservations}
+    />
+  );
 };
 
 export default ListingPage;
