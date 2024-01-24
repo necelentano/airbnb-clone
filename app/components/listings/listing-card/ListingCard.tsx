@@ -4,16 +4,14 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { format } from "date-fns";
 
-import { Listing, Reservation } from "@prisma/client";
-
 import useCountries from "@/app/hooks/useCountries";
-import { SafeListing, SafeUser } from "@/app/types";
+import { SafeListing, SafeReservations, SafeUser } from "@/app/types";
 import HearthButton from "../../hearth-button/HearthButton";
 import Button from "../../button/Button";
 
 interface ListingCardProps {
   data: SafeListing;
-  reservation?: Reservation;
+  reservation?: SafeReservations;
   onAction?: (id: string) => void;
   disabled?: boolean;
   actionLabel?: string;
