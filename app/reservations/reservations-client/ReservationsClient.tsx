@@ -1,21 +1,21 @@
 "use client";
 
+import { useCallback, useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 import Container from "@/app/components/container/Container";
 import Heading from "@/app/components/heading/Heading";
-import { SafeReservations, SafeUser } from "@/app/types";
-import { useCallback, useState } from "react";
-import axios from "axios";
-import toast from "react-hot-toast";
 import ListingCard from "@/app/components/listings/listing-card/ListingCard";
+import { SafeReservations, SafeUser } from "@/app/types";
 
-interface TripsClientProps {
+interface ReservationsClientProps {
   reservations: SafeReservations[];
-  currentUser?: SafeUser | null;
+  currentUser?: SafeUser;
 }
 
-const TripsClient: React.FC<TripsClientProps> = ({
+const ReservationsClient: React.FC<ReservationsClientProps> = ({
   reservations,
   currentUser,
 }) => {
@@ -44,10 +44,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
 
   return (
     <Container>
-      <Heading
-        title="Trips"
-        subtitle="Where you've been and where you're going"
-      />
+      <Heading title="Reservations" subtitle="Bookings on your properties" />
       <div
         className="
             mt-10
@@ -78,4 +75,4 @@ const TripsClient: React.FC<TripsClientProps> = ({
   );
 };
 
-export default TripsClient;
+export default ReservationsClient;
