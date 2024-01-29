@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/navbar/Navbar";
+import RegisterModal from "./components/modals/register-modal/RegisterModal";
+import ToasterProvider from "./providers/toaster-provider/ToasterProvider";
+import LoginModal from "./components/modals/login-modal/LoginModal";
+import getCurrentUser from "./actions/getCurrentUser";
+import RentModal from "./components/modals/rent-modal/RentModal";
+import SearchModal from "./components/modals/search-modal/SearchModal";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -9,14 +16,23 @@ export const metadata: Metadata = {
   description: "Airbnb clone",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const currentUser = await getCurrentUser();
   return (
     <html lang="en">
-      <body className={nunito.className}>{children}</body>
+      <body className={nunito.className}>
+        <ToasterProvider />
+        <LoginModal />
+        <RegisterModal />
+        <RentModal />
+        <SearchModal />
+        <Navbar currentUser={currentUser} />
+        <div className="pb-20 pt-28">{children}</div>
+      </body>
     </html>
   );
 }
