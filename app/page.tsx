@@ -17,9 +17,7 @@ const Home = async ({ searchParams }: HomeProps) => {
   if (listings instanceof Error) {
     return (
       <Container>
-        <div className="h-[60vh] flex flex-col gap-2 justify-center items-center text-red-600">
-          ERROR: {listings.message}
-        </div>
+        <EmptyState title="Uh Oh" subtitle={listings.message} />
       </Container>
     );
   }
