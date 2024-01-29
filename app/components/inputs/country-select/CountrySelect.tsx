@@ -1,7 +1,7 @@
 "use client";
 
 import Select from "react-select";
-import { CountruSelectValue, CountrySelectProps } from "./types";
+import { CountrySelectValue, CountrySelectProps } from "./types";
 import useCountries from "@/app/hooks/useCountries";
 
 const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
@@ -13,8 +13,8 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
         isClearable
         options={getAll()}
         value={value}
-        onChange={(value) => onChange(value as CountruSelectValue)}
-        formatOptionLabel={(option: CountruSelectValue) => (
+        onChange={(value) => onChange(value as CountrySelectValue)}
+        formatOptionLabel={(option: CountrySelectValue) => (
           <div className="flex flex-row items-center gap-3">
             <div>{option.flag}</div>
             <div>
