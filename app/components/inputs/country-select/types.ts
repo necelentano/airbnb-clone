@@ -1,4 +1,4 @@
-export type CountruSelectValue = {
+export type CountrySelectValue = {
   flag: string;
   label: string;
   latlng: number[];
@@ -7,6 +7,6 @@ export type CountruSelectValue = {
 };
 
 export interface CountrySelectProps {
-  value?: CountruSelectValue;
-  onChange: (value: CountruSelectValue) => void;
+  value?: CountrySelectValue;
+  onChange: (value: CountrySelectValue) => void;
 }
